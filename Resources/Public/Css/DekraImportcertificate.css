@@ -1,0 +1,568 @@
+/* =============================================================================
+   DEKRA Importcertificate24 – TYPO3 Extension Styles
+   ============================================================================= */
+
+/* CSS Custom Properties */
+:root {
+  --dekra-green: #009b4e;
+  --dekra-green-dark: #007a3d;
+  --dekra-green-light: #e8f7f0;
+  --dekra-blue: #0055a5;
+  --dekra-gray: #6c757d;
+  --dekra-gray-light: #f8f9fa;
+  --dekra-border: #dee2e6;
+  --dekra-text: #212529;
+  --dekra-radius: 8px;
+  --dekra-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+/* Base Container */
+.dekra-certificate-request {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--dekra-text);
+}
+
+/* =============================================================================
+   Step Indicator
+   ============================================================================= */
+.dekra-step-indicator {
+  margin: 24px 0 40px;
+}
+
+.dekra-step-indicator__track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dekra-step-indicator__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.dekra-step-indicator__bubble {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  background: #e9ecef;
+  color: var(--dekra-gray);
+  border: 2px solid #dee2e6;
+  transition: all 0.3s;
+}
+
+.dekra-step-indicator__step.is-active .dekra-step-indicator__bubble {
+  background: var(--dekra-green);
+  color: #fff;
+  border-color: var(--dekra-green);
+}
+
+.dekra-step-indicator__step.is-completed .dekra-step-indicator__bubble {
+  background: var(--dekra-green-dark);
+  color: #fff;
+  border-color: var(--dekra-green-dark);
+}
+
+.dekra-step-indicator__label {
+  font-size: 12px;
+  color: var(--dekra-gray);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.dekra-step-indicator__step.is-active .dekra-step-indicator__label,
+.dekra-step-indicator__step.is-completed .dekra-step-indicator__label {
+  color: var(--dekra-green);
+  font-weight: 600;
+}
+
+.dekra-step-indicator__line {
+  flex: 1;
+  height: 2px;
+  background: #dee2e6;
+  margin: 0 8px;
+  margin-bottom: 22px;
+}
+
+.dekra-step-indicator__line.is-completed {
+  background: var(--dekra-green);
+}
+
+/* =============================================================================
+   Step Content
+   ============================================================================= */
+.dekra-step-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dekra-text);
+  margin-bottom: 8px;
+}
+
+.dekra-step-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--dekra-green);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.dekra-step-description {
+  color: var(--dekra-gray);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.dekra-form-section {
+  background: #fff;
+  border: 1px solid var(--dekra-border);
+  border-radius: var(--dekra-radius);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.dekra-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--dekra-green);
+  color: var(--dekra-text);
+}
+
+/* =============================================================================
+   Form Elements
+   ============================================================================= */
+.dekra-form-group {
+  margin-bottom: 20px;
+}
+
+.dekra-form-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.dekra-form-group--half { flex: 1 1 calc(50% - 8px); min-width: 200px; }
+.dekra-form-group--third { flex: 1 1 calc(33% - 11px); min-width: 160px; }
+.dekra-form-group--two-thirds { flex: 2 1 calc(66% - 8px); min-width: 200px; }
+.dekra-form-group--quarter { flex: 1 1 calc(25% - 12px); min-width: 120px; }
+.dekra-form-group--three-quarters { flex: 3 1 calc(75% - 4px); min-width: 200px; }
+
+.dekra-label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--dekra-text);
+}
+
+.dekra-label--required::after {
+  content: ' *';
+  color: #dc3545;
+}
+
+.dekra-input,
+.dekra-select,
+.dekra-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--dekra-border);
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--dekra-text);
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.dekra-input:focus,
+.dekra-select:focus,
+.dekra-textarea:focus {
+  outline: none;
+  border-color: var(--dekra-green);
+  box-shadow: 0 0 0 3px rgba(0, 155, 78, 0.15);
+}
+
+.dekra-input--vin {
+  font-family: 'Courier New', monospace;
+  font-size: 17px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.dekra-vin-input-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.dekra-vin-input-wrapper .dekra-input { flex: 1; }
+
+.dekra-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.dekra-field-hint {
+  font-size: 12px;
+  color: var(--dekra-gray);
+  margin: 4px 0 0;
+}
+
+.dekra-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.dekra-checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--dekra-green);
+}
+
+/* =============================================================================
+   Buttons
+   ============================================================================= */
+.dekra-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.dekra-btn--lg { padding: 14px 28px; font-size: 16px; }
+
+.dekra-btn--primary {
+  background: var(--dekra-green);
+  color: #fff;
+  border-color: var(--dekra-green);
+}
+.dekra-btn--primary:hover { background: var(--dekra-green-dark); border-color: var(--dekra-green-dark); }
+
+.dekra-btn--success {
+  background: #198754;
+  color: #fff;
+  border-color: #198754;
+}
+.dekra-btn--success:hover { background: #146c43; }
+
+.dekra-btn--secondary {
+  background: var(--dekra-blue);
+  color: #fff;
+  border-color: var(--dekra-blue);
+}
+.dekra-btn--secondary:hover { background: #004494; }
+
+.dekra-btn--outline {
+  background: transparent;
+  color: var(--dekra-gray);
+  border-color: var(--dekra-border);
+}
+.dekra-btn--outline:hover { background: var(--dekra-gray-light); }
+
+.dekra-form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--dekra-border);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* =============================================================================
+   Info Boxes & Cards
+   ============================================================================= */
+.dekra-info-box {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: #e8f4fd;
+  border: 1px solid #bee5eb;
+  border-radius: var(--dekra-radius);
+  padding: 16px;
+  margin: 20px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.dekra-info-box--green {
+  background: var(--dekra-green-light);
+  border-color: #a8d5bc;
+}
+
+.dekra-info-box__icon { font-size: 20px; flex-shrink: 0; }
+
+.dekra-vehicle-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--dekra-green-light);
+  border: 1px solid #a8d5bc;
+  border-radius: var(--dekra-radius);
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.dekra-vehicle-card__icon { font-size: 40px; flex-shrink: 0; }
+.dekra-vehicle-card__info { flex: 1; }
+.dekra-vehicle-card__info h3 { margin: 0 0 4px; font-size: 18px; }
+.dekra-vehicle-card__info p { margin: 0; font-size: 14px; color: var(--dekra-gray); }
+.dekra-price-estimate { color: var(--dekra-green-dark) !important; font-weight: 600; }
+
+.dekra-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.dekra-badge--success { background: var(--dekra-green); color: #fff; }
+
+/* =============================================================================
+   Certificate Type Cards
+   ============================================================================= */
+.dekra-certificate-type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.dekra-certificate-type-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  border: 1.5px solid var(--dekra-border);
+  border-radius: var(--dekra-radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #fff;
+}
+
+.dekra-certificate-type-card:hover {
+  border-color: var(--dekra-green);
+  background: var(--dekra-green-light);
+}
+
+.dekra-certificate-type-card input[type="radio"] {
+  margin-top: 2px;
+  accent-color: var(--dekra-green);
+  flex-shrink: 0;
+}
+
+.dekra-certificate-type-card__label {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* =============================================================================
+   Summary (Step 3)
+   ============================================================================= */
+.dekra-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dekra-summary-card {
+  background: #fff;
+  border: 1px solid var(--dekra-border);
+  border-radius: var(--dekra-radius);
+  padding: 20px;
+}
+
+.dekra-summary-card--full { grid-column: 1 / -1; }
+
+.dekra-summary-card__title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--dekra-border);
+}
+
+.dekra-summary-list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 12px;
+  margin: 0;
+  font-size: 14px;
+}
+
+.dekra-summary-list dt {
+  color: var(--dekra-gray);
+  font-weight: normal;
+}
+
+.dekra-summary-list dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+.dekra-consent-section {
+  background: var(--dekra-gray-light);
+  border-radius: var(--dekra-radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* =============================================================================
+   Confirmation
+   ============================================================================= */
+.dekra-confirmation {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.dekra-confirmation__icon { font-size: 64px; margin-bottom: 16px; }
+
+.dekra-confirmation__title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--dekra-green);
+  margin-bottom: 16px;
+}
+
+.dekra-confirmation__ref {
+  display: inline-block;
+  background: var(--dekra-green-light);
+  border: 1px solid #a8d5bc;
+  border-radius: 6px;
+  padding: 10px 20px;
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+
+.dekra-ref-number {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  color: var(--dekra-green-dark);
+}
+
+.dekra-confirmation__message {
+  max-width: 540px;
+  margin: 0 auto 32px;
+  color: var(--dekra-gray);
+  line-height: 1.7;
+}
+
+.dekra-next-steps {
+  max-width: 480px;
+  margin: 0 auto 32px;
+  text-align: left;
+}
+
+.dekra-steps-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dekra-steps-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--dekra-border);
+  font-size: 15px;
+}
+
+.dekra-steps-list__number {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--dekra-green);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.dekra-confirmation__actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* =============================================================================
+   Flash Messages
+   ============================================================================= */
+.dekra-flash-message {
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.dekra-flash-message--0 { background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; }
+.dekra-flash-message--1 { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+.dekra-flash-message--2 { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; }
+.dekra-flash-message--3 { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+
+/* =============================================================================
+   VIN Lookup Result
+   ============================================================================= */
+.dekra-vin-result {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* =============================================================================
+   Responsive
+   ============================================================================= */
+@media (max-width: 600px) {
+  .dekra-form-row { flex-direction: column; }
+  .dekra-form-group--half,
+  .dekra-form-group--third,
+  .dekra-form-group--two-thirds,
+  .dekra-form-group--quarter,
+  .dekra-form-group--three-quarters { flex: 1 1 100%; min-width: 0; }
+
+  .dekra-vin-input-wrapper { flex-direction: column; }
+  .dekra-vehicle-card { flex-direction: column; text-align: center; }
+  .dekra-form-actions { justify-content: center; }
+  .dekra-summary-grid { grid-template-columns: 1fr; }
+  .dekra-step-indicator__label { display: none; }
+}

@@ -1,0 +1,17 @@
+# cat=basic; type=string; label=API-Key (von DEKRA Importcertificate24)
+apiKey =
+
+# cat=basic; type=string; label=Partner-ID
+partnerId =
+
+# cat=basic; type=boolean; label=Sandbox-Modus (kein echter API-Aufruf)
+sandboxMode = 1
+
+# cat=email; type=string; label=Absender-E-Mail
+senderEmail = info@example.com
+
+# cat=email; type=string; label=Absender-Name
+senderName = DEKRA Importcertificate
+
+# cat=email; type=string; label=Admin-E-Mail für Benachrichtigungen
+adminEmail =

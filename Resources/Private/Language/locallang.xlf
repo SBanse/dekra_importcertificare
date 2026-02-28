@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="de" datatype="plaintext" original="messages" date="2025-01-01T00:00:00Z"
+          product-name="dekra_importcertificate">
+        <header/>
+        <body>
+            <trans-unit id="plugin.certificateRequest.title">
+                <source>Zertifikatsanfrage</source>
+            </trans-unit>
+            <trans-unit id="plugin.certificateRequest.description">
+                <source>Mehrstufiges Formular zur Anfrage von Importzertifikaten bei DEKRA Importcertificate24</source>
+            </trans-unit>
+            <trans-unit id="plugin.vehicleSearch.title">
+                <source>Fahrzeugsuche / VIN-Lookup</source>
+            </trans-unit>
+            <trans-unit id="plugin.sampleCertificates.title">
+                <source>Beispielzertifikate</source>
+            </trans-unit>
+            <trans-unit id="plugin.faq.title">
+                <source>Häufige Fragen (FAQ)</source>
+            </trans-unit>
+            <trans-unit id="form.submit.success">
+                <source>Ihre Anfrage wurde erfolgreich eingereicht.</source>
+            </trans-unit>
+            <trans-unit id="form.submit.error">
+                <source>Bei der Übermittlung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

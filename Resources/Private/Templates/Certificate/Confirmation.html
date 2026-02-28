@@ -1,0 +1,62 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <div class="dekra-certificate-request">
+        <div class="dekra-confirmation">
+            <div class="dekra-confirmation__icon">✅</div>
+            <h2 class="dekra-confirmation__title">Vielen Dank für Ihre Anfrage!</h2>
+
+            <f:if condition="{request}">
+                <div class="dekra-confirmation__ref">
+                    Ihre Referenznummer: <strong class="dekra-ref-number">{referenceNumber}</strong>
+                </div>
+            </f:if>
+
+            <div class="dekra-confirmation__message">
+                <p>
+                    Ihre Anfrage wurde erfolgreich eingereicht. Sie erhalten in Kürze eine
+                    Bestätigung an die angegebene E-Mail-Adresse.
+                </p>
+                <p>
+                    Unser Team wird Ihre Angaben prüfen und Ihnen ein <strong>konkretes, unverbindliches
+                    Angebot</strong> per E-Mail zusenden. Typische Bearbeitungszeit: <strong>3–7 Werktage</strong>
+                    nach Zahlungseingang (falls Sie bestellen).
+                </p>
+            </div>
+
+            <div class="dekra-next-steps">
+                <h3>Ihre nächsten Schritte:</h3>
+                <ol class="dekra-steps-list">
+                    <li>
+                        <span class="dekra-steps-list__number">1</span>
+                        Sie erhalten eine Bestätigungs-E-Mail an <strong>{request.email}</strong>
+                    </li>
+                    <li>
+                        <span class="dekra-steps-list__number">2</span>
+                        Wir prüfen Ihre Angaben und senden Ihnen ein Angebot
+                    </li>
+                    <li>
+                        <span class="dekra-steps-list__number">3</span>
+                        Nach Ihrer Auftragsbestätigung und Zahlung erhalten Sie das Zertifikat per Post
+                    </li>
+                </ol>
+            </div>
+
+            <div class="dekra-confirmation__actions">
+                <a href="{f:uri.action(action:'status', controller:'Certificate', arguments:{referenceNumber: referenceNumber})}"
+                   class="dekra-btn dekra-btn--secondary">
+                    Status abfragen
+                </a>
+                <a href="{f:uri.action(action:'index', controller:'Certificate')}"
+                   class="dekra-btn dekra-btn--outline">
+                    Neue Anfrage stellen
+                </a>
+            </div>
+        </div>
+    </div>
+</f:section>
+
+</html>

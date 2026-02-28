@@ -1,0 +1,152 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <div class="dekra-certificate-request">
+
+        <f:render partial="StepIndicator" arguments="{currentStep: 3}" />
+
+        <div class="dekra-step-content">
+            <h2 class="dekra-step-title">
+                <span class="dekra-step-number">3</span>
+                Zusammenfassung &amp; Absenden
+            </h2>
+
+            <p class="dekra-step-description">
+                Bitte prüfen Sie Ihre Angaben sorgfältig, bevor Sie die Anfrage absenden.
+            </p>
+
+            <!-- Zusammenfassung -->
+            <div class="dekra-summary-grid">
+                <div class="dekra-summary-card">
+                    <h3 class="dekra-summary-card__title">🚗 Fahrzeugdaten</h3>
+                    <dl class="dekra-summary-list">
+                        <dt>FIN / VIN:</dt>
+                        <dd><strong>{request.vin}</strong></dd>
+                        <dt>Hersteller / Modell:</dt>
+                        <dd>{request.vehicleMake} {request.vehicleModel} ({request.vehicleYear})</dd>
+                        <dt>Kategorie:</dt>
+                        <dd>{request.vehicleCategory}</dd>
+                        <dt>Herkunftsland:</dt>
+                        <dd>{importCountries.{request.importCountry}}</dd>
+                        <dt>Zielland:</dt>
+                        <dd>Deutschland</dd>
+                    </dl>
+                </div>
+
+                <div class="dekra-summary-card">
+                    <h3 class="dekra-summary-card__title">📋 Zertifikat</h3>
+                    <dl class="dekra-summary-list">
+                        <dt>Zertifikatstyp:</dt>
+                        <dd>{certificateTypes.{request.certificateType}}</dd>
+                        <dt>Express:</dt>
+                        <dd>
+                            <f:if condition="{request.urgentProcessing}">
+                                <f:then>Ja</f:then>
+                                <f:else>Nein</f:else>
+                            </f:if>
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="dekra-summary-card">
+                    <h3 class="dekra-summary-card__title">👤 Ihre Daten</h3>
+                    <dl class="dekra-summary-list">
+                        <dt>Name:</dt>
+                        <dd>{request.salutation} {request.firstName} {request.lastName}</dd>
+                        <f:if condition="{request.company}">
+                            <dt>Firma:</dt>
+                            <dd>{request.company}</dd>
+                        </f:if>
+                        <dt>Adresse:</dt>
+                        <dd>{request.street}, {request.zip} {request.city}</dd>
+                        <dt>E-Mail:</dt>
+                        <dd>{request.email}</dd>
+                        <f:if condition="{request.phone}">
+                            <dt>Telefon:</dt>
+                            <dd>{request.phone}</dd>
+                        </f:if>
+                    </dl>
+                </div>
+            </div>
+
+            <f:if condition="{request.additionalInfo}">
+                <div class="dekra-summary-card dekra-summary-card--full">
+                    <h3 class="dekra-summary-card__title">💬 Ihre Bemerkungen</h3>
+                    <p>{request.additionalInfo}</p>
+                </div>
+            </f:if>
+
+            <!-- Datenschutz & AGB -->
+            <f:form action="submit" controller="Certificate" method="post" objectName="request" object="{request}">
+
+                <!-- Alle Daten als Hidden Fields -->
+                <f:form.hidden property="vin" />
+                <f:form.hidden property="vehicleMake" />
+                <f:form.hidden property="vehicleModel" />
+                <f:form.hidden property="vehicleYear" />
+                <f:form.hidden property="vehicleCategory" />
+                <f:form.hidden property="importCountry" />
+                <f:form.hidden property="targetCountry" />
+                <f:form.hidden property="certificateType" />
+                <f:form.hidden property="urgentProcessing" />
+                <f:form.hidden property="salutation" />
+                <f:form.hidden property="firstName" />
+                <f:form.hidden property="lastName" />
+                <f:form.hidden property="company" />
+                <f:form.hidden property="street" />
+                <f:form.hidden property="zip" />
+                <f:form.hidden property="city" />
+                <f:form.hidden property="country" />
+                <f:form.hidden property="phone" />
+                <f:form.hidden property="email" />
+                <f:form.hidden property="additionalInfo" />
+
+                <div class="dekra-consent-section">
+                    <div class="dekra-form-group">
+                        <label class="dekra-checkbox-label">
+                            <f:form.checkbox property="privacyAccepted" value="1" required="required" />
+                            <span>
+                                Ich habe die <a href="/datenschutz" target="_blank">Datenschutzerklärung</a> gelesen
+                                und stimme der Verarbeitung meiner Daten zu.
+                                <span class="dekra-required">*</span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="dekra-form-group">
+                        <label class="dekra-checkbox-label">
+                            <f:form.checkbox property="termsAccepted" value="1" required="required" />
+                            <span>
+                                Ich habe die <a href="/agb" target="_blank">AGB</a> gelesen und akzeptiere diese.
+                                <span class="dekra-required">*</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="dekra-info-box dekra-info-box--green">
+                    <div class="dekra-info-box__icon">✅</div>
+                    <div class="dekra-info-box__content">
+                        <strong>100% kostenlos &amp; unverbindlich</strong><br>
+                        Diese Anfrage ist für Sie vollständig kostenfrei. Sie erhalten ein Angebot per E-Mail,
+                        das Sie annehmen oder ablehnen können.
+                    </div>
+                </div>
+
+                <div class="dekra-form-actions">
+                    <a href="javascript:history.back()" class="dekra-btn dekra-btn--outline">
+                        ← Zurück
+                    </a>
+                    <button type="submit" class="dekra-btn dekra-btn--success dekra-btn--lg">
+                        ✉️ Anfrage kostenlos absenden
+                    </button>
+                </div>
+
+            </f:form>
+        </div>
+    </div>
+</f:section>
+
+</html>

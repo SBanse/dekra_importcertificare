@@ -1,0 +1,180 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <div class="dekra-certificate-request">
+
+        <f:render partial="StepIndicator" arguments="{currentStep: 2}" />
+
+        <div class="dekra-step-content">
+            <h2 class="dekra-step-title">
+                <span class="dekra-step-number">2</span>
+                Zertifikatstyp &amp; Ihre Daten
+            </h2>
+
+            <!-- VIN-Lookup Ergebnis -->
+            <f:if condition="{vinData.found}">
+                <div class="dekra-vehicle-card">
+                    <div class="dekra-vehicle-card__icon">🚗</div>
+                    <div class="dekra-vehicle-card__info">
+                        <h3>{vinData.make} {vinData.model} ({vinData.year})</h3>
+                        <p>FIN: <strong>{vinData.vin}</strong> | Kategorie: {vinData.category}</p>
+                        <f:if condition="{vinData.estimatedPrice}">
+                            <p class="dekra-price-estimate">
+                                Geschätzter Preis: <strong>{vinData.estimatedPrice}</strong>
+                                | Lieferzeit: {vinData.deliveryDays}
+                            </p>
+                        </f:if>
+                    </div>
+                    <div class="dekra-vehicle-card__badge">
+                        <span class="dekra-badge dekra-badge--success">Daten gefunden</span>
+                    </div>
+                </div>
+            </f:if>
+
+            <f:form action="step3" controller="Certificate" method="post" objectName="request" object="{request}">
+
+                <!-- Versteckte Felder aus Schritt 1 -->
+                <f:form.hidden property="vin" />
+                <f:form.hidden property="vehicleMake" />
+                <f:form.hidden property="vehicleModel" />
+                <f:form.hidden property="vehicleYear" />
+                <f:form.hidden property="vehicleCategory" />
+                <f:form.hidden property="importCountry" />
+                <f:form.hidden property="targetCountry" />
+
+                <!-- Zertifikatstyp -->
+                <div class="dekra-form-section">
+                    <h3 class="dekra-section-title">Benötigtes Dokument</h3>
+
+                    <div class="dekra-certificate-type-grid">
+                        <f:for each="{certificateTypes}" as="label" key="value">
+                            <label class="dekra-certificate-type-card">
+                                <f:form.radio property="certificateType" value="{value}" />
+                                <div class="dekra-certificate-type-card__content">
+                                    <span class="dekra-certificate-type-card__label">{label}</span>
+                                </div>
+                            </label>
+                        </f:for>
+                    </div>
+
+                    <div class="dekra-form-group">
+                        <label class="dekra-checkbox-label">
+                            <f:form.checkbox property="urgentProcessing" value="1" />
+                            <span>Expressbearbeitung gewünscht (ggf. Aufpreis)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Kundendaten -->
+                <div class="dekra-form-section">
+                    <h3 class="dekra-section-title">Ihre Kontaktdaten</h3>
+
+                    <div class="dekra-form-row">
+                        <div class="dekra-form-group dekra-form-group--quarter">
+                            <label for="salutation" class="dekra-label dekra-label--required">Anrede</label>
+                            <f:form.select id="salutation"
+                                property="salutation"
+                                class="dekra-select"
+                                options="{Herr: 'Herr', Frau: 'Frau', Divers: 'Divers'}"
+                                prependOptionLabel="-- wählen --"
+                                prependOptionValue=""
+                                required="required" />
+                        </div>
+                        <div class="dekra-form-group dekra-form-group--three-quarters">
+                            <label for="company" class="dekra-label">Firma (optional)</label>
+                            <f:form.textfield id="company"
+                                property="company"
+                                class="dekra-input"
+                                placeholder="Ihr Unternehmen" />
+                        </div>
+                    </div>
+
+                    <div class="dekra-form-row">
+                        <div class="dekra-form-group dekra-form-group--half">
+                            <label for="firstName" class="dekra-label dekra-label--required">Vorname</label>
+                            <f:form.textfield id="firstName"
+                                property="firstName"
+                                class="dekra-input"
+                                required="required" />
+                        </div>
+                        <div class="dekra-form-group dekra-form-group--half">
+                            <label for="lastName" class="dekra-label dekra-label--required">Nachname</label>
+                            <f:form.textfield id="lastName"
+                                property="lastName"
+                                class="dekra-input"
+                                required="required" />
+                        </div>
+                    </div>
+
+                    <div class="dekra-form-group">
+                        <label for="street" class="dekra-label dekra-label--required">Straße &amp; Hausnummer</label>
+                        <f:form.textfield id="street"
+                            property="street"
+                            class="dekra-input"
+                            required="required" />
+                    </div>
+
+                    <div class="dekra-form-row">
+                        <div class="dekra-form-group dekra-form-group--third">
+                            <label for="zip" class="dekra-label dekra-label--required">PLZ</label>
+                            <f:form.textfield id="zip"
+                                property="zip"
+                                class="dekra-input"
+                                required="required" />
+                        </div>
+                        <div class="dekra-form-group dekra-form-group--two-thirds">
+                            <label for="city" class="dekra-label dekra-label--required">Ort</label>
+                            <f:form.textfield id="city"
+                                property="city"
+                                class="dekra-input"
+                                required="required" />
+                        </div>
+                    </div>
+
+                    <div class="dekra-form-row">
+                        <div class="dekra-form-group dekra-form-group--half">
+                            <label for="email" class="dekra-label dekra-label--required">E-Mail-Adresse</label>
+                            <f:form.textfield id="email"
+                                property="email"
+                                type="email"
+                                class="dekra-input"
+                                required="required" />
+                        </div>
+                        <div class="dekra-form-group dekra-form-group--half">
+                            <label for="phone" class="dekra-label">Telefon</label>
+                            <f:form.textfield id="phone"
+                                property="phone"
+                                type="tel"
+                                class="dekra-input"
+                                placeholder="+49 ..." />
+                        </div>
+                    </div>
+
+                    <div class="dekra-form-group">
+                        <label for="additionalInfo" class="dekra-label">Weitere Informationen / Bemerkungen</label>
+                        <f:form.textarea id="additionalInfo"
+                            property="additionalInfo"
+                            class="dekra-textarea"
+                            rows="4"
+                            placeholder="Besonderheiten, Fragen oder weitere Angaben zu Ihrem Fahrzeug..." />
+                    </div>
+                </div>
+
+                <div class="dekra-form-actions">
+                    <a href="javascript:history.back()" class="dekra-btn dekra-btn--outline">
+                        ← Zurück
+                    </a>
+                    <button type="submit" class="dekra-btn dekra-btn--primary dekra-btn--lg">
+                        Weiter zur Zusammenfassung →
+                    </button>
+                </div>
+
+            </f:form>
+        </div>
+    </div>
+</f:section>
+
+</html>

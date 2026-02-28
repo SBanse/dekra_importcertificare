@@ -1,0 +1,16 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:if condition="{flashMessages -> f:count()}">
+    <div class="dekra-flash-messages">
+        <f:for each="{flashMessages}" as="flashMessage">
+            <div class="dekra-flash-message dekra-flash-message--{flashMessage.severity}">
+                {flashMessage.message}
+            </div>
+        </f:for>
+    </div>
+</f:if>
+
+<f:render section="Main" />
+
+</html>

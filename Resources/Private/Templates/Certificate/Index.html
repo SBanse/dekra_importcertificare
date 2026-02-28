@@ -1,0 +1,91 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <div class="dekra-certificate-request">
+        <div class="dekra-hero">
+            <div class="dekra-hero__content">
+                <h1 class="dekra-hero__title">
+                    Importzertifikat anfragen
+                </h1>
+                <p class="dekra-hero__subtitle">
+                    Ihr Partner für Importzertifikate und Abgasgutachten –
+                    für die Zulassung Ihres Import-Fahrzeugs in Deutschland und der EU.
+                </p>
+
+                <div class="dekra-features">
+                    <div class="dekra-feature">
+                        <span class="dekra-feature__icon">✅</span>
+                        <span>100% kostenlos &amp; unverbindlich anfragen</span>
+                    </div>
+                    <div class="dekra-feature">
+                        <span class="dekra-feature__icon">⚡</span>
+                        <span>Lieferung in 3–7 Werktagen</span>
+                    </div>
+                    <div class="dekra-feature">
+                        <span class="dekra-feature__icon">🌍</span>
+                        <span>Alle Drittländer: USA, Japan, UK u.v.m.</span>
+                    </div>
+                    <div class="dekra-feature">
+                        <span class="dekra-feature__icon">🏆</span>
+                        <span>Von akkreditierten technischen Diensten</span>
+                    </div>
+                </div>
+
+                <f:link.action action="step1" controller="Certificate"
+                    class="dekra-btn dekra-btn--primary dekra-btn--lg">
+                    Jetzt Zertifikat anfragen →
+                </f:link.action>
+            </div>
+        </div>
+
+        <!-- Leistungsübersicht -->
+        <div class="dekra-services-grid">
+            <div class="dekra-service-card">
+                <div class="dekra-service-card__icon">📋</div>
+                <h3>Technisches Datenblatt</h3>
+                <p>Zertifikat der Rechtskonformität (CoC) für § 13 FZV und § 21 StVZO Zulassung.</p>
+            </div>
+            <div class="dekra-service-card">
+                <div class="dekra-service-card__icon">💨</div>
+                <h3>Abgasgutachten</h3>
+                <p>Emissionsklassen-Nachweis – spart oft mehrere Hundert Euro Kfz-Steuer jährlich.</p>
+            </div>
+            <div class="dekra-service-card">
+                <div class="dekra-service-card__icon">🔊</div>
+                <h3>Geräuschgutachten</h3>
+                <p>Lärmpegelnachweis gemäß EU-Richtlinien für die Fahrzeugzulassung.</p>
+            </div>
+            <div class="dekra-service-card">
+                <div class="dekra-service-card__icon">💡</div>
+                <h3>Lichtgutachten</h3>
+                <p>Scheinwerfer-Nachweis und EMV-Zertifikat für Importfahrzeuge.</p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .dekra-hero {
+            background: linear-gradient(135deg, #009b4e 0%, #0055a5 100%);
+            border-radius: 12px;
+            padding: 48px 40px;
+            color: #fff;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .dekra-hero__title { font-size: 32px; font-weight: 800; margin: 0 0 12px; }
+        .dekra-hero__subtitle { font-size: 17px; opacity: 0.9; margin: 0 0 32px; max-width: 540px; margin-left: auto; margin-right: auto; }
+        .dekra-features { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 24px; margin-bottom: 32px; }
+        .dekra-feature { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+        .dekra-feature__icon { font-size: 18px; }
+        .dekra-services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+        .dekra-service-card { background: #fff; border: 1px solid #dee2e6; border-radius: 10px; padding: 24px; text-align: center; }
+        .dekra-service-card__icon { font-size: 36px; margin-bottom: 12px; }
+        .dekra-service-card h3 { font-size: 16px; margin: 0 0 8px; }
+        .dekra-service-card p { font-size: 14px; color: #6c757d; margin: 0; }
+    </style>
+</f:section>
+
+</html>

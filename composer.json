@@ -1,0 +1,22 @@
+{
+    "name": "vendor/dekra-importcertificate",
+    "description": "TYPO3 Extension zur Integration des DEKRA Importcertificate24 Portals",
+    "type": "typo3-cms-extension",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "typo3/cms-core": "^13.0",
+        "typo3/cms-frontend": "^13.0",
+        "typo3/cms-extbase": "^13.0",
+        "typo3/cms-fluid": "^13.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\DekraImportcertificate\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "dekra_importcertificate"
+        }
+    }
+}

@@ -1,0 +1,51 @@
+plugin.tx_dekraimportcertificate {
+    view {
+        templateRootPaths {
+            0 = EXT:dekra_importcertificate/Resources/Private/Templates/
+            10 = {$plugin.tx_dekraimportcertificate.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:dekra_importcertificate/Resources/Private/Partials/
+            10 = {$plugin.tx_dekraimportcertificate.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:dekra_importcertificate/Resources/Private/Layouts/
+            10 = {$plugin.tx_dekraimportcertificate.view.layoutRootPath}
+        }
+    }
+
+    persistence {
+        storagePid = {$plugin.tx_dekraimportcertificate.persistence.storagePid}
+    }
+
+    settings {
+        # Seiten-IDs für Weiterleitungen
+        pages {
+            requestPid = {$plugin.tx_dekraimportcertificate.settings.pages.requestPid}
+            confirmationPid = {$plugin.tx_dekraimportcertificate.settings.pages.confirmationPid}
+            statusPid = {$plugin.tx_dekraimportcertificate.settings.pages.statusPid}
+        }
+
+        # Formular-Einstellungen
+        form {
+            maxFileSize = 4
+            allowedFileTypes = pdf,jpg,jpeg,png
+        }
+
+        # Anzeige-Einstellungen
+        display {
+            showPriceEstimate = 1
+            showDeliveryTime = 1
+        }
+    }
+}
+
+# CSS & JS einbinden
+page {
+    includeCSS {
+        dekraImportcertificate = EXT:dekra_importcertificate/Resources/Public/Css/DekraImportcertificate.css
+    }
+    includeJSFooter {
+        dekraImportcertificate = EXT:dekra_importcertificate/Resources/Public/JavaScript/DekraImportcertificate.js
+    }
+}

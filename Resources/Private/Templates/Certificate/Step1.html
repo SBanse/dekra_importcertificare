@@ -1,0 +1,131 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <div class="dekra-certificate-request">
+
+        <!-- Fortschrittsanzeige -->
+        <f:render partial="StepIndicator" arguments="{currentStep: 1}" />
+
+        <div class="dekra-step-content">
+            <h2 class="dekra-step-title">
+                <span class="dekra-step-number">1</span>
+                Fahrzeugdaten eingeben
+            </h2>
+            <p class="dekra-step-description">
+                Bitte geben Sie die Fahrgestellnummer (FIN/VIN) und weitere Fahrzeugdaten ein.
+                Die FIN finden Sie im Fahrzeugbrief, Fahrzeugschein oder am Fahrzeug selbst.
+            </p>
+
+            <f:form action="step2" controller="Certificate" method="post" objectName="request" object="{request}">
+
+                <!-- VIN / Fahrgestellnummer -->
+                <div class="dekra-form-group">
+                    <label for="vin" class="dekra-label dekra-label--required">
+                        Fahrgestellnummer (FIN / VIN)
+                    </label>
+                    <div class="dekra-vin-input-wrapper">
+                        <f:form.textfield id="vin"
+                            property="vin"
+                            class="dekra-input dekra-input--vin"
+                            placeholder="z.B. 1HGCM82633A123456"
+                            maxlength="17"
+                            pattern="[A-HJ-NPR-Za-hj-npr-z0-9]{17}"
+                            required="required"
+                            data-vin-lookup="true" />
+                        <button type="button" class="dekra-btn dekra-btn--secondary" id="vinLookupBtn">
+                            <span class="dekra-btn-icon">🔍</span> FIN prüfen
+                        </button>
+                    </div>
+                    <div id="vinLookupResult" class="dekra-vin-result" style="display:none;"></div>
+                    <p class="dekra-field-hint">
+                        17-stellige alphanumerische Nummer – keine I, O oder Q
+                    </p>
+                </div>
+
+                <div class="dekra-form-row">
+                    <!-- Fahrzeughersteller -->
+                    <div class="dekra-form-group dekra-form-group--half">
+                        <label for="vehicleMake" class="dekra-label dekra-label--required">Hersteller / Marke</label>
+                        <f:form.textfield id="vehicleMake"
+                            property="vehicleMake"
+                            class="dekra-input"
+                            placeholder="z.B. Ford, Chevrolet, Toyota"
+                            required="required" />
+                    </div>
+
+                    <!-- Fahrzeugmodell -->
+                    <div class="dekra-form-group dekra-form-group--half">
+                        <label for="vehicleModel" class="dekra-label dekra-label--required">Modell</label>
+                        <f:form.textfield id="vehicleModel"
+                            property="vehicleModel"
+                            class="dekra-input"
+                            placeholder="z.B. Mustang, Silverado"
+                            required="required" />
+                    </div>
+                </div>
+
+                <div class="dekra-form-row">
+                    <!-- Baujahr -->
+                    <div class="dekra-form-group dekra-form-group--third">
+                        <label for="vehicleYear" class="dekra-label dekra-label--required">Baujahr</label>
+                        <f:form.textfield id="vehicleYear"
+                            property="vehicleYear"
+                            type="number"
+                            class="dekra-input"
+                            placeholder="z.B. 2020"
+                            min="1960"
+                            max="{f:variable(name: 'currentYear') -> f:defaultCase()}"
+                            required="required" />
+                    </div>
+
+                    <!-- Fahrzeugkategorie -->
+                    <div class="dekra-form-group dekra-form-group--third">
+                        <label for="vehicleCategory" class="dekra-label dekra-label--required">Fahrzeugkategorie</label>
+                        <f:form.select id="vehicleCategory"
+                            property="vehicleCategory"
+                            class="dekra-select"
+                            options="{vehicleCategories}"
+                            prependOptionLabel="-- bitte wählen --"
+                            prependOptionValue=""
+                            required="required" />
+                    </div>
+
+                    <!-- Herkunftsland -->
+                    <div class="dekra-form-group dekra-form-group--third">
+                        <label for="importCountry" class="dekra-label dekra-label--required">Herkunftsland</label>
+                        <f:form.select id="importCountry"
+                            property="importCountry"
+                            class="dekra-select"
+                            options="{importCountries}"
+                            prependOptionLabel="-- bitte wählen --"
+                            prependOptionValue=""
+                            required="required" />
+                    </div>
+                </div>
+
+                <!-- Hinweis-Box -->
+                <div class="dekra-info-box">
+                    <div class="dekra-info-box__icon">ℹ️</div>
+                    <div class="dekra-info-box__content">
+                        <strong>Kostenlose &amp; unverbindliche Anfrage</strong><br>
+                        Die Anfrage ist für Sie vollständig kostenlos. Sie erhalten nach Prüfung
+                        Ihrer Daten ein konkretes Angebot per E-Mail.
+                    </div>
+                </div>
+
+                <div class="dekra-form-actions">
+                    <button type="submit" class="dekra-btn dekra-btn--primary dekra-btn--lg">
+                        Weiter zu Schritt 2 →
+                    </button>
+                </div>
+
+            </f:form>
+        </div>
+    </div>
+</f:section>
+
+</html>

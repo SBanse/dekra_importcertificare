@@ -1,0 +1,37 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="dekra-step-indicator" aria-label="Fortschritt">
+    <div class="dekra-step-indicator__track">
+
+        <div class="dekra-step-indicator__step {f:if(condition: '{currentStep} >= 1', then: 'is-active')} {f:if(condition: '{currentStep} > 1', then: 'is-completed')}">
+            <div class="dekra-step-indicator__bubble">
+                <f:if condition="{currentStep} > 1">
+                    <f:then>✓</f:then>
+                    <f:else>1</f:else>
+                </f:if>
+            </div>
+            <span class="dekra-step-indicator__label">Fahrzeug</span>
+        </div>
+
+        <div class="dekra-step-indicator__line {f:if(condition: '{currentStep} > 1', then: 'is-completed')}"></div>
+
+        <div class="dekra-step-indicator__step {f:if(condition: '{currentStep} >= 2', then: 'is-active')} {f:if(condition: '{currentStep} > 2', then: 'is-completed')}">
+            <div class="dekra-step-indicator__bubble">
+                <f:if condition="{currentStep} > 2">
+                    <f:then>✓</f:then>
+                    <f:else>2</f:else>
+                </f:if>
+            </div>
+            <span class="dekra-step-indicator__label">Zertifikat &amp; Daten</span>
+        </div>
+
+        <div class="dekra-step-indicator__line {f:if(condition: '{currentStep} > 2', then: 'is-completed')}"></div>
+
+        <div class="dekra-step-indicator__step {f:if(condition: '{currentStep} >= 3', then: 'is-active')}">
+            <div class="dekra-step-indicator__bubble">3</div>
+            <span class="dekra-step-indicator__label">Zusammenfassung</span>
+        </div>
+
+    </div>
+</div>

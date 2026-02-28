@@ -1,0 +1,17 @@
+plugin.tx_dekraimportcertificate {
+    view {
+        templateRootPath =
+        partialRootPath =
+        layoutRootPath =
+    }
+    persistence {
+        storagePid = 0
+    }
+    settings {
+        pages {
+            requestPid = 0
+            confirmationPid = 0
+            statusPid = 0
+        }
+    }
+}
